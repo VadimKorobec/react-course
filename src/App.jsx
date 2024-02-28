@@ -1,9 +1,9 @@
-import { Post } from "./components/Post";
+import { ListPosts } from "./components/ListPosts/ListPosts";
 
 export const App = () => {
   return (
-    <>
-      <Post />
-    </>
+    <main>
+      <ListPosts />
+    </main>
   );
 };
