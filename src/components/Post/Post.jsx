@@ -4,7 +4,7 @@ export const Post = (props) => {
   return (
     <li className={styles.post}>
       <p className={styles.author}>{props.name}</p>
-      <p className={styles.text}>{props.title}</p>
+      <p className={styles.text}>{props.text}</p>
     </li>
   );
 };
