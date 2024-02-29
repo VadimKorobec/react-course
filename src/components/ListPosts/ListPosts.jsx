@@ -6,7 +6,7 @@ import { NewPost } from "../NewPost/NewPost";
 
 import styles from "./ListPosts.module.css";
 
-export const ListPosts = () => {
+export const ListPosts = ({ isPosting }) => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
 
@@ -20,12 +20,14 @@ export const ListPosts = () => {
 
   return (
     <>
-      <Modal>
-        <NewPost
-          onTextChange={handleChangeText}
-          onChangeTitle={handleChangeTitle}
-        />
-      </Modal>
+      {isPosting && (
+        <Modal onClick={handleVisibleModal}>
+          <NewPost
+            onTextChange={handleChangeText}
+            onChangeTitle={handleChangeTitle}
+          />
+        </Modal>
+      )}
       <ul className={styles.posts}>
         <Post name={title} text={text} />
         <Post name="NextJS" text="NextJS is great!" />

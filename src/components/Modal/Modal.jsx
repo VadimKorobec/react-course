@@ -1,10 +1,10 @@
 import styles from "./Modal.module.css";
 
-export const Modal = ({ children }) => {
+export const Modal = ({ children, onClick }) => {
   return (
     <>
-      <div className={styles.backdrop} />
-      <dialog open={true} className={styles.modal}>
+      <div className={styles.backdrop} onClick={onClick} />
+      <dialog open className={styles.modal}>
         {children}
       </dialog>
     </>
