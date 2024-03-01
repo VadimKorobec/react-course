@@ -15,7 +15,11 @@ export const NewPost = ({ onCancel, onCreatePost }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onCreatePost(text, title);
+    const postData = {
+      text,
+      title,
+    };
+    onCreatePost(postData);
     onCancel();
   };
 
