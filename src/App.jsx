@@ -4,7 +4,7 @@ import { ListPosts } from "./components/ListPosts/ListPosts";
 import { MainHeader } from "./components/MainHeader/MainHeader";
 
 export const App = () => {
-  const [visibleModal, setVisibleModal] = useState(true);
+  const [visibleModal, setVisibleModal] = useState(false);
 
   const handleShowModal = () => {
     setVisibleModal(true);
@@ -18,7 +18,10 @@ export const App = () => {
     <>
       <MainHeader onCreatePost={handleShowModal} />
       <main>
-        <ListPosts isPosting={visibleModal} />
+        <ListPosts
+          isPosting={visibleModal}
+          onStopPosting={handleVisibleModal}
+        />
       </main>
     </>
   );

@@ -6,31 +6,29 @@ import { NewPost } from "../NewPost/NewPost";
 
 import styles from "./ListPosts.module.css";
 
-export const ListPosts = ({ isPosting }) => {
-  const [text, setText] = useState("");
-  const [title, setTitle] = useState("");
+export const ListPosts = ({ isPosting, onStopPosting }) => {
+  const [posts, setPosts] = useState([]);
 
-  const handleChangeText = (e) => {
-    setText(e.target.value);
-  };
-
-  const handleChangeTitle = (e) => {
-    setTitle(e.target.value);
+  const handleCreateNewPost = (text, title) => {
+    setPosts((prevState) => [...prevState, { text, title }]);
   };
 
   return (
     <>
       {isPosting && (
-        <Modal onClick={handleVisibleModal}>
+        <Modal onClose={onStopPosting}>
           <NewPost
-            onTextChange={handleChangeText}
-            onChangeTitle={handleChangeTitle}
+            onCancel={onStopPosting}
+            onCreatePost={handleCreateNewPost}
           />
         </Modal>
       )}
       <ul className={styles.posts}>
-        <Post name={title} text={text} />
-        <Post name="NextJS" text="NextJS is great!" />
+        {posts.map((item, idx) => (
+          <li key={idx}>
+            <Post item={item} />
+          </li>
+        ))}
       </ul>
     </>
   );
