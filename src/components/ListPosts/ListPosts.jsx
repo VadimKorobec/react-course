@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { Post } from "../Post/Post";
-import { Modal } from "../Modal/Modal";
-import { NewPost } from "../NewPost/NewPost";
 
 import styles from "./ListPosts.module.css";
 
-export const ListPosts = ({ isPosting, onStopPosting }) => {
+export const ListPosts = () => {
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -34,14 +32,6 @@ export const ListPosts = ({ isPosting, onStopPosting }) => {
 
   return (
     <>
-      {isPosting && (
-        <Modal onClose={onStopPosting}>
-          <NewPost
-            onCancel={onStopPosting}
-            onCreatePost={handleCreateNewPost}
-          />
-        </Modal>
-      )}
       {!isFetching && posts.length > 0 ? (
         <ul className={styles.posts}>
           {posts.map((item) => (
